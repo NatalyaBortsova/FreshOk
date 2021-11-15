@@ -5,11 +5,324 @@
 
 
 
+.header {
+    &__top {
+        background-color: $dark-800;
+    }
 
+    &__top-inner {
+        padding: 17px 0 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: $white;
+        @extend %opensans-700;
+        font-size: 13px;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+    }
 
+    &__bottom {
+        background-color: $green-900;
+    }
+
+    &__bottom-inner {
+        padding: 30px 0 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__contacts {
+        display: flex;
+    }
+
+    &__connect:not(:last-child) {
+        margin-right: 48px;
+    }
+
+    &__connect-link {
+        position: relative;
+    }
+
+    &__connect-link::before {
+        content: '';
+        top: 0px;
+        left: 0;
+        width: 32px;
+        height: 22px;
+        position: absolute;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+    }
+
+    &__connect--delivery {
+        padding-left: 44px;
+    }
+
+    &__connect--delivery::before {
+        background-image: url('../images/icons/delivery.svg');
+
+    }
+
+    &__connect--phone {
+        padding-left: 36px;
+    }
+
+    &__connect--phone::before {
+        background-image: url('../images/icons/phone.svg');
+        width: 22px;
+    }
+}
+
+.menu {
+    &__list {
+        display: flex;
+        align-items: center;
+    }
+
+    &__item:not(:last-child) {
+        margin-right: 24px;
+    }
+}
+
+.catalogue {
+    background-color: $white;
+    border-radius: 6px;
+    margin-right: 27px;
+
+    &__select {
+        padding: 15px 23px 15px 61px;
+        appearance: none;
+        border: none;
+        cursor: pointer;
+        color: $green-900;
+        font-size: 14px;
+        @extend %opensans-600;
+    }
+
+    &__goods {
+        color: $black;
+        width: 100%;
+        padding: 15px 0 15px;
+    }
+
+    &__inner {
+        position: relative;
+    }
+
+    &__inner::after {
+        content: '';
+        position: absolute;
+        top: 40%;
+        right: 19px;
+        display: block;
+        width: 4px;
+        height: 7px;
+        border: solid $green-900;
+        border-width: 0 1px 1px 0;
+        display: inline-block;
+        padding: 3px;
+        transform: rotate(45deg);
+    }
+
+    &__inner::before {
+        content: '';
+        top: 16px;
+        left: 18px;
+        display: inline-block;
+        position: absolute;
+        background-image: url('../images/icons/nav_icon.svg');
+        width: 25px;
+        height: 17px;
+    }
+}
+
+.search {
+    background-color: $white;
+    margin-right: 30px;
+    border-radius: 6px;
+    position: relative;
+
+    &__goods {
+        padding: 15px 358px 15px 51px;
+    }
+
+    &__goods::placeholder {
+        color: $dark-800;
+        letter-spacing: 0.03em;
+    }
+
+    &__btn {
+        background-color: $dark-800;
+        color: $white;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        padding: 15px 52px;
+        cursor: pointer;
+        top: 0;
+        right: 0;
+        border-radius: 6px;
+        position: absolute;
+    }
+
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        background-image: url('../images/icons/search.svg');
+        width: 20px;
+        height: 20px;
+        top: 16px;
+        left: 13px;
+    }
+}
+
+.user-nav {
+    display: flex;
+
+    &__link:not(:last-child) {
+        margin-right: 30px;
+    }
+
+    &__link {
+        position: relative;
+        background-repeat: no-repeat;
+        width: 32px;
+        height: 32px;
+
+        &--user {
+            background-image: url('../images/icons/user.svg');
+            width: 24px;
+        }
+
+        &--heart {
+            background-image: url('../images/icons/heart.svg');
+            height: 29px;
+        }
+
+        &--cart {
+            background-image: url('../images/icons/cart.svg');
+        }
+    }
+
+    &__num {
+        position: absolute;
+        color: $red-900;
+        font-size: 10px;
+        font-weight: 600;
+        background-color: $white;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        right: 20px;
+        top: 0px;
+        transform: translateY(-50%);
+        text-align: center;
+        line-height: 1.8;
+    }
+}
+
+.footer {
+    background-color: $dark-800;
+
+    &__top {
+        padding: 30px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__items {
+        color: $white;
+
+    }
+
+    &__text {
+        margin: 31px 0 18px;
+        line-height: 1;
+    }
+
+    &__form {
+        background-color: $white;
+        padding: 12px 126px 12px 12px;
+        border-radius: 6px;
+        position: relative;
+    }
+
+    &__input::placeholder {
+        color: $grey;
+        font-size: 14px;
+    }
+
+    &__btn {
+        background-color: $green-900;
+        color: $white;
+        @extend %opensans-700;
+        font-size: 12px;
+        text-transform: uppercase;
+        line-height: 1.3;
+        padding: 15px 16px;
+        position: absolute;
+        border-radius: 6px;
+        top: 0;
+        right: 0;
+    }
+
+    &__items--menu {
+        padding-top: 120px;
+    }
+
+    &__item {
+        padding: 9px 0;
+    }
+}
+
+.social {
+    display: flex;
+
+    &__item {
+        margin-top: 18px;
+    }
+
+    &__item:not(:last-child) {
+        margin-right: 12px;
+    }
+
+    &__link {
+        display: block;
+        width: 32px;
+        height: 32px;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+
+.footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    padding: 28px 0 29px;
+    color: $white;
+    text-transform: uppercase;
+}
+
+.accept {
+    display: flex;
+}
+
+.accept__items:not(:last-child) {
+    margin-right: 24px;
+}
+
+.accept__link {
+    display: block;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
 
 
 @import 'media';
-
-
