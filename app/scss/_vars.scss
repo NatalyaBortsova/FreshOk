@@ -1,4 +1,6 @@
 $green-900: #63A60F;
+$green-600: #4D800C;
+$green-600: #4D810C;
 $green-200: #E0EDCF;
 $green-100: #EFF6E7;
 $dark-900: #121212;
@@ -46,6 +48,16 @@ $grey: #4F4F4F;
 %ruda-600 {
     font-family: 'Ruda-SemiBold', sans-serif;
     font-weight: 600;
+}
+
+%ruda-900 {
+    font-family: 'Ruda-ExtraBold', sans-serif;
+    font-weight: 900;
+}
+
+%signika-700 {
+    font-family: 'Signika-Bold', sans-serif;
+    font-weight: 700;
 }
 
 

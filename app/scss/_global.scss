@@ -14,6 +14,7 @@ body {
     font-size: 14px;
     line-height: 1.4;
     color: $dark-900;
+    letter-spacing: 0.03em;
     display: flex;
     flex-direction: column;
 }
@@ -33,4 +34,69 @@ main {
     clip-path: inset(100%);
     clip: rect(0 0 0 0);
     overflow: hidden;
+}
+
+.title {
+    @extend %ruda-600;
+    font-size: 32px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-bottom: 30px;
+}
+
+.button {
+    background-color: $white;
+    border: 1px solid $green-900;
+    border-radius: 6px;
+    padding: 12px 24px;
+    font-size: 18px;
+    color: $green-900;
+    line-height: 1.2;
+    margin: 48px 69px;
+    transition: background-color 0.5s, box-shadow 0.3s;
+}
+
+.button:hover {
+    background-color: $green-100;
+}
+
+.button:focus {
+    background-color: rgba(255, 255, 255, 0.0001);
+    box-shadow: 0px 0px 0px 3px $green-200;
+}
+
+.button:active {
+    box-shadow: inset 0px 10px 4px rgba(0, 0, 0, 0.1);
+}
+
+.animation:hover {
+    color: $green-600;
+    border-bottom: 2px solid $green-600;
+}
+
+.animation:focus {
+    background-color: rgba(255, 255, 255, 0.0001);
+    box-shadow: 0px 0px 0px 3px $green-200;
+    border-radius: 6px;
+}
+
+.animation:active {
+    border-bottom: 2px solid rgba(99, 166, 14, 0.2);
+}
+
+.animation--btn {
+    transition: background-color 0.5s;
+}
+
+.animation--btn:hover {
+    background-color: $green-600;
+}
+
+.animation--btn:focus {
+    box-shadow: 0px 0px 0px 4px $green-200;
+}
+
+.animation--btn:active {
+    color: rgba(255, 255, 255, 0.5);
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 }

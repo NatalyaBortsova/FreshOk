@@ -66,3 +66,23 @@
          url('../fonts/Ruda-SemiBold.woff') format('woff');
     font-display: swap;
 }
+
+@font-face {
+    font-family: 'Ruda-ExtraBold';
+    font-weight: 900;
+    font-style: normal;
+    src: local('Ruda-ExtraBold') 
+         url('../fonts/Ruda-ExtraBold.woff2') format('woff2'),
+         url('../fonts/Ruda-ExtraBold.woff') format('woff');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Signika-Bold';
+    font-weight: 700;
+    font-style: normal;
+    src: local('Signika-Bold') 
+         url('../fonts/Signika-Bold.woff2') format('woff2'),
+         url('../fonts/Signika-Bold.woff') format('woff');
+    font-display: swap;
+}
