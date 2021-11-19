@@ -10,4 +10,14 @@ $('.dropdawn').on('click', function(){
     $('.dropdawn, .catalogue__select').toggleClass('active');
 });
 
+$('.brands__slider').slick({    
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    arrows: false,
+    autoplay: true,
+    infinite: true,
+});
+
+var mixer = mixitup('.top__content');
+
 });
