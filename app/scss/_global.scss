@@ -55,7 +55,6 @@ body {
 
 .button {
     background-color: $green-900;
-    border: 1px solid $green-900;
     border-radius: 6px;
     padding: 12px 24px;
     font-size: 18px;
@@ -64,45 +63,14 @@ body {
     letter-spacing: 0.03em;
     transition: background-color 0.5s, box-shadow 0.3s;
     &:hover {
-        background-color: $green-100;
+        background-color: $green-700;
     }
     &:focus {
-        background-color: rgba($white, 0.0001);
+        background-color: green-900;
         box-shadow: 0 0 0 3px $green-200;
     }
     &:active {
-        box-shadow: inset 0 10px 4px rgba($black, 0.1);
+        box-shadow: inset 0 4px 4px rgba($black, 0.25);
     }
 }
 
-.animation:hover {
-    color: $green-600;
-    border-bottom: 2px solid $green-600;
-}
-
-.animation:focus {
-    background-color: rgba($white, 0.0001);
-    box-shadow: 0 0 0 3px $green-200;
-    border-radius: 6px;
-}
-
-.animation:active {
-    border-bottom: 2px solid rgba(99, 166, 14, 0.2);
-}
-
-.animation--btn {
-    transition: background-color 0.5s;
-}
-
-.animation--btn:hover {
-    background-color: $green-600;
-}
-
-.animation--btn:focus {
-    box-shadow: 0 0 0 4px $green-200;
-}
-
-.animation--btn:active {
-    color: rgba($white, 0.5);
-    box-shadow: inset 0 4px 4px rgba($black, 0.25);
-}
