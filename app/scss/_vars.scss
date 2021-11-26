@@ -29,11 +29,6 @@ $grey: #4F4F4F;
     font-weight: 400;
 }
 
-@function max($numbers...) {
-  @return m#{a}x(#{$numbers});
-}
-@function min($numbers...) {
-  @return m#{i}n(#{$numbers});
-}
+
 
 

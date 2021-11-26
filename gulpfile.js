@@ -5,6 +5,8 @@ const concat = require('gulp-concat');
 const autoprefixer = require('gulp-autoprefixer');
 const uglify = require('gulp-uglify');
 const imagemin = require('gulp-imagemin');
+const svgSprite = require('gulp-svg-sprite');
+const cheerio = require('gulp-cheerio');
 const del = require('del');
 const browserSync = require('browser-sync').create();
 
@@ -38,7 +40,7 @@ function scripts() {
             'node_modules/jquery/dist/jquery.js',
             'node_modules/slick-carousel/slick/slick.js',
             'node_modules/mixitup/dist/mixitup.min.js',
-            'node_modules/@fancyapps/fancybox/dist/jquery.fancybox.js',
+            'node_modules/rateyo/src/jquery.rateyo.js',
             'app/js/main.js'
         ])
         .pipe(concat('main.min.js'))
@@ -64,6 +66,29 @@ function images() {
 }
 
 
+function svgSprites() {
+    return src('app/images/icons/*.svg') 
+    .pipe(cheerio({
+        run: ($) => {
+            $("[fill]").removeAttr("fill"); // очищаем цвет у иконок по умолчанию, чтобы можно было задать свой
+            $("[stroke]").removeAttr("stroke"); // очищаем, если есть лишние атрибуты строк
+            $("[style]").removeAttr("style"); // убираем внутренние стили для иконок
+        },
+        parserOptions: { xmlMode: true },
+      })
+  ) 
+    .pipe(
+        svgSprite({
+          mode: {
+            stack: {
+              sprite: '../sprite.svg', 
+            },
+          },
+        })
+      )
+          .pipe(dest('app/images')); 
+  }
+
 function build() {
     return src([
         'app/**/*.html',
@@ -81,6 +106,7 @@ function watching() {
     watch(['app/scss/**/*.scss'], styles);
     watch(['app/js/**/*.js', '!app/js/main.min.js'], scripts);
     watch(['app/**/*.html']).on('change', browserSync.reload);
+    watch(['app/images/icons/*.svg'], svgSprites);
 
 }
 
@@ -89,9 +115,10 @@ exports.scripts = scripts;
 exports.browsersync = browsersync; 
 exports.watching = watching; 
 exports.images = images;
+exports.svgSprites = svgSprites;
 exports.cleanDist = cleanDist;
 exports.build = series(cleanDist, images, build);
 
 
-exports.default = parallel(styles, scripts, browsersync, watching);
+exports.default = parallel(svgSprites, styles, scripts, browsersync, watching);
 
