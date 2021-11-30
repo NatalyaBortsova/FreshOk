@@ -30,7 +30,6 @@ body {
     padding: 0 15px;
 }
 
-
 .sr-only {
     position: absolute;
     width: 1px;
@@ -62,22 +61,82 @@ body {
     line-height: 1;
     letter-spacing: 0.03em;
     transition: background-color 0.5s, box-shadow 0.3s;
+   
     &:hover {
         background-color: $green-700;
     }
+
     &:focus {
         background-color: green-900;
         box-shadow: 0 0 0 3px $green-200;
     }
+
     &:active {
         box-shadow: inset 0 4px 4px rgba($black, 0.25);
+    }   
+}
+
+.jq-number__field {
+    width: 84px;
+    border-bottom-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    border: transparent;
+}
+
+.jq-number__field input {
+    width: 100%;
+    height: 24px;
+    background-color: rgba(99, 166, 14, 0.1);
+    @extend %opensans;
+    font-weight: 400;
+    font-size: 16px;
+    color: $dark-500;
+    text-align: center;
+}
+
+.jq-number {
+    position: relative;
+    padding: 0;
+}
+
+.jq-number__spin {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 24px;
+    height: 24px;
+    border: transparent;
+    box-shadow: none;
+    background: $green-900;
+    text-shadow: none;
+    cursor: pointer;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 11px;
+        left: 4px;
+        background-color: $white;
+        width: 16px;
+        height: 1px;
+    }
+
+    &.minus {
+        left: 0;
+    }
+
+    &.plus {
+        &::before {
+            content: '';
+            position: absolute;
+            width: 1px;
+            height: 16px;
+            top: 4px;
+            left: 12px;
+            background-color: $white;
+        }
     }
 }
-
-.mixitup-control-active {
-    border-bottom: 2px solid rgba(99, 166, 14, 0.2);
-}
-
-
 
 
