@@ -28,7 +28,7 @@ $(function () {
 
 
     $('.user-nav__link--search').on('click', function () {
-        $('.form-search').toggleClass('active')
+        $('.form-search--header').toggleClass('active')
     });
 
     $('.brands__slider').slick({
