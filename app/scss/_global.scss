@@ -1,3 +1,5 @@
+@import 'mixin';
+
 html,
 body {
     height: 100%;
@@ -50,6 +52,11 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.03em;
     margin-bottom: 30px;
+
+    @include r(560) {
+        font-size: 24px;
+        margin-bottom: 24px;
+    }
 }
 
 .button {
@@ -61,7 +68,9 @@ body {
     line-height: 1;
     letter-spacing: 0.03em;
     transition: background-color 0.5s, box-shadow 0.3s;
-   
+
+
+
     &:hover {
         background-color: $green-700;
     }
@@ -73,7 +82,11 @@ body {
 
     &:active {
         box-shadow: inset 0 4px 4px rgba($black, 0.25);
-    }   
+    }
+}
+
+.logo__img {
+    object-fit: cover;
 }
 
 .jq-number__field {
@@ -138,5 +151,3 @@ body {
         }
     }
 }
-
-
