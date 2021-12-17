@@ -1,0 +1,36 @@
+.badges {
+    width: 66px;
+    position: absolute;
+    top: 8px;
+    left: 12px;
+    z-index: 3;
+
+    &__item {
+        display: inline-block;
+        color: $white;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: 600;
+        font-size: 10px;
+        border-radius: 6px;
+        padding: 3px 6px;
+
+        &--new {
+            background-color: $green-900;
+            margin-bottom: 6px;
+        }
+
+        &--discaunt {
+            background-color: $red-900;
+        }
+
+        &--best {
+            background-color: $orange-900;
+        }
+    }
+
+    &.none {
+        opacity: 0;
+    }
+}

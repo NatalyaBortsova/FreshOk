@@ -1,0 +1,119 @@
+.advertise {
+    padding-bottom: 72px;
+
+    @include r(560) {
+        padding-bottom: 48px;
+    }
+
+    &__list {
+        display: grid;
+        min-height: 300px;
+        grid-template-columns: 630px 300px 300px;
+        grid-gap: 30px;
+
+        @include r(1230) {
+            grid-template-columns: 430px 250px 250px;
+            grid-gap: 10px;
+            justify-content: center;
+        }
+
+        @include r(992) {
+            grid-template-columns: 280px 220px 220px;
+        }
+
+        @include r(768) {
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 5px;
+        }
+
+        @include r(560) {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    }
+
+    &__item {
+        color: $white;
+        padding: 79px 0 79px 30px;
+        border-radius: 6px;
+        text-transform: uppercase;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+
+        @include r(992) {
+            padding: 76px 10px 30px 15px;
+        }
+
+        @include r(560) {
+            width: 100%;
+            min-height: 300px;
+        }
+
+        &--highlight {
+            text-shadow: 1px 1px 0 rgba($black, 0.25);
+        }
+
+        &:nth-child(1) {
+            @include r(768) {
+                grid-column: 1 / 4;
+            }
+        }
+
+        &:not(:last-child) {
+            @include r(560) {
+                margin-bottom: 10px;
+            }
+        }
+    }
+
+    &__subtitle {
+        display: block;
+        font-weight: 600;
+        font-size: 12px;
+        letter-spacing: 0.1em;
+        line-height: 1;
+        margin-bottom: 18px;
+        @include line-clamp(1);
+    }
+
+    &__heading {
+        @extend %ruda;
+        font-weight: 600;
+        font-size: 30px;
+        max-width: 400px;
+        letter-spacing: 0;
+        margin-bottom: 8px;
+        @include line-clamp(3);
+
+        @include r(992) {
+            font-size: 20px;
+            max-width: 250px;
+        }
+
+        @include r(560) {
+            font-size: 24px;
+            margin-bottom: 74px;
+        }
+
+        &--highlight {
+            text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.25);
+        }
+
+        &--content {
+            max-width: 200px;
+
+            @include r(992) {
+                max-width: 125px;
+            }
+        }
+    }
+
+    &__link {
+        line-height: 1;
+        padding-bottom: 2px;
+        border-bottom: 2px solid $white;
+        @include line-clamp(1);
+    }
+
+}

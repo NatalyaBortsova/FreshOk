@@ -1,0 +1,102 @@
+.form-search {
+    background-color: $white;
+    border-radius: 6px;
+    position: relative;
+    transition: background-color 0.5s;
+    max-width: 576px;
+    width: 100%;
+
+    @include r(1230) {
+        max-width: 460px;
+    }
+
+    &--header {
+        margin-right: 24px;
+
+        @include r(1230) {
+            margin-right: 0;
+        }
+    }
+
+    @include r(992) {
+        max-width: 576px;
+        width: 100%;
+
+        &--header {
+            bottom: -49px;
+            left: 0;
+            position: absolute;
+            transform: scale(0);
+            transition: transform 0.5s;
+
+            &.active {
+                border-radius: 0;
+                border: 1px solid $black;
+                transform: scale(1);
+                z-index: 1;
+            }
+        }
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-image: url('../images/icons/search.svg');
+        top: 16px;
+        left: 13px;
+    }
+
+    &__input {
+        max-width: 418px;
+        width: 100%;
+        padding: 15px 15px 15px 51px;
+
+        &::placeholder {
+            color: $dark-800;
+            letter-spacing: 0.03em;
+        }
+    }
+
+    &__btn {
+        background-color: $dark-800;
+        text-transform: uppercase;
+        padding: 16px 47px;
+        cursor: pointer;
+        top: 0;
+        right: 0;
+        border-radius: 0 6px 6px 0;
+        position: absolute;
+
+        @include r(1230) {
+            padding: 16px 35px;
+        }
+
+        @include r(992) {
+            border-radius: 0;
+        }
+
+        @include r(768) {
+            padding: 18px 25px;
+            font-size: 14px;
+        }
+
+        &:hover {
+            background: rgba(49, 53, 43, 0.85);
+        }
+
+        &:focus {
+            box-shadow: 0 0 0 4px rgba($white, 0.5);
+        }
+
+        &:active {
+            color: rgba($white, 0.5);
+        }
+    }
+
+    &:hover {
+        background-color: $green-200;
+    }
+
+}

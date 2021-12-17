@@ -1,0 +1,41 @@
+.breadcrumbs {
+    background-color: $silver-100;
+    padding: 24px 0;
+    line-height: 1.2;
+    letter-spacing: 0.03em;
+    color: $dark-500;
+
+    &__list {
+        display: flex;
+        @include r(560) {
+            flex-wrap: wrap;
+        }
+    }
+
+    &__item {
+        position: relative;
+
+        &:not(:first-child) {
+            padding-left: 16px;
+        }
+
+        &:last-child {
+            &::after {
+                background-image: none;
+            }
+            @include r(560) {
+                padding-left: 0;
+            }
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            background-image: url('../images/icons/angle-right.svg');
+            width: 6px;
+            height: 10px;
+            top: 4px;
+            right: -11px;
+        }
+    }
+}

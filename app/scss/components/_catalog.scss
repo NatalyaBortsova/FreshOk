@@ -1,0 +1,129 @@
+.catalog {
+    position: relative;
+    max-width: 240px;
+    width: 100%;
+
+
+    @include r(992) {
+        display: none;
+    }
+
+    &__btn {
+        padding: 15px 38px 15px 61px;
+        max-width: 240px;
+        width: 100%;
+        background-color: $white;
+        border-radius: 6px;
+        margin-right: 20px;
+        transition: background-color 0.5s;
+        font-weight: 600;
+        font-size: 14px;
+        color: $green-900;
+        position: relative;
+
+        @include r(1230) {
+            margin-right: 20px;
+        }
+
+        @include r(992) {
+            padding: 15px 30px 13px 0;
+            font-size: 18px;
+            color: $black;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-right: 0;
+        }
+
+        &::before {
+            content: '';
+            top: 16px;
+            left: 18px;
+            display: inline-block;
+            position: absolute;
+            background-image: url('../images/icons/nav_icon.svg');
+            width: 25px;
+            height: 17px;
+
+            @include r(992) {
+                display: none;
+            }
+        }
+
+        &:hover {
+            background-color: $green-200;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 19px;
+            right: 14px;
+            width: 4px;
+            height: 7px;
+            border: solid $green-900;
+            border-width: 0 1px 1px 0;
+            padding: 3px;
+            transform: rotate(45deg);
+        }
+
+        &.active:after {
+            transform: rotate(225deg);
+            top: 22px;
+        }
+    }
+
+    &__list {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        right: 0;
+        top: 45px;
+        z-index: 10;
+        opacity: 0;
+        background-color: $white;
+        border-radius: 0 0 6px 6px;
+        color: $black;
+        display: block;
+        overflow: auto;
+        transform: translateY(-200%);
+        transition: opacity 0.5s;
+
+        @include r(992) {
+            top: 52px;
+        }
+
+        &.active {
+            transform: translateY(0%);
+            opacity: 1;
+            transition: opacity 0.5s;
+        }
+    }
+
+    &__item {
+        padding: 15px 0;
+        border-left: 3px solid transparent;
+
+        @include r(922) {
+            padding: 6px 0;
+        }
+
+        &:hover {
+            color: $green-900;
+            border-left: 3px solid $green-900;
+        }
+    }
+
+    &__link {
+        padding: 15px 24px;
+
+        &:focus {
+            box-shadow: 0 0 0 3px $green-200;
+            color: $black;
+        }
+
+        &:active {
+            color: $silver-600;
+            box-shadow: none;
+        }
+    }
+}

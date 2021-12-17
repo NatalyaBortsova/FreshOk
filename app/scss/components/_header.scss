@@ -1,0 +1,48 @@
+.header {
+    position: relative;
+
+    &__top {
+        background-color: $dark-800;
+    }
+
+    &__inner {
+        padding: 17px 0 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: $white;
+        font-weight: 700;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+
+        @include r(992) {
+            padding: 0 0;
+        }
+    }
+
+    &__bottom {
+        position: relative;
+        background-color: $green-900;
+    }
+
+    &__wrapper {
+        padding: 25px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @include r(992) {
+            padding: 20px 0;
+        }
+
+        @include r(768) {
+            padding: 11px 20px 11px 15px;
+            justify-content: space-between;
+        }
+
+        @include r(560) {
+            padding: 11px 10px 11px 0;
+        }
+    }
+}

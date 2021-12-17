@@ -1,0 +1,22 @@
+.brands {
+    padding: 72px 0 70px;
+
+    @include r(768) {
+        padding: 45px 0;
+
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        height: 60px;
+    }
+
+    &__image {
+        opacity: 0.7;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+}

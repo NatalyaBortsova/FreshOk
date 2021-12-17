@@ -1,0 +1,55 @@
+
+.top-filter {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 51px;
+
+    @include r(560) {
+        flex-wrap: wrap;
+        margin-bottom: 17px;
+        line-height: 2;
+    }
+
+    &__item {
+        &:not(:last-child) {
+            margin-right: 30px;
+
+            @include r(560) {
+                margin-right: 18px;
+            }
+        }
+    }
+
+    &__btn {
+        border-bottom: 2px solid transparent;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: $dark-500;
+        letter-spacing: 0.03em;
+        transition: color 0.5s, border-bottom 0.5s, box-shadow 0.3s, background-color 0.3s;
+
+        &:hover {
+            color: $green-900;
+        }
+
+        &:focus {
+            box-shadow: 0 0 0 3px $green-200;
+            border-radius: 3px;
+        }
+
+        &.mixitup-control-active {
+            position: relative;
+            display: inline-block;
+
+            &::before {
+                content: '';
+                position: absolute;
+                height: 2px;
+                width: 100%;
+                bottom: 0;
+                left: 0;
+                background-color: rgba(99, 166, 14, 0.2);
+            }
+        }
+    }
+}

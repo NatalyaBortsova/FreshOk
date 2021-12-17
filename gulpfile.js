@@ -1,4 +1,10 @@
-const {src, dest, watch, parallel, series } = require('gulp');
+const {
+    src,
+    dest,
+    watch,
+    parallel,
+    series
+} = require('gulp');
 
 const scss = require('gulp-sass')(require('sass'));
 const concat = require('gulp-concat');
@@ -9,7 +15,18 @@ const svgSprite = require('gulp-svg-sprite');
 const cheerio = require('gulp-cheerio');
 const del = require('del');
 const browserSync = require('browser-sync').create();
+const fileInclude = require('gulp-file-include');
 
+
+const htmlInclude = () => {
+    return src(['app/html/*.html'])
+    .pipe(fileInclude ({
+        prefix: '@',
+        basepath: '@file',
+    }))
+    .pipe(dest('app'))
+    .pipe(browserSync.stream());
+}
 
 function browsersync() {
     browserSync.init({
@@ -42,10 +59,8 @@ function scripts() {
             'node_modules/rateyo/src/jquery.rateyo.js',
             'node_modules/jquery-form-styler/dist/jquery.formstyler.js',
             'node_modules/ion-rangeslider/js/ion.rangeSlider.js',
-            'node_modules/@fancyapps/ui/src/Fancybox/Fancybox.js',
-            'node_modules/@fancyapps/ui/src/Carousel/Carousel.js',
             'node_modules/slick-carousel/slick/slick.js',
-            // 'node_modules/@fancyapps/fancybox/dist/jquery.fancybox.js',            
+            'node_modules/simplebar/dist/simplebar.js',            
             'app/js/main.js'
         ])
         .pipe(concat('main.min.js'))
@@ -57,50 +72,63 @@ function scripts() {
 function images() {
     return src('app/images/**/*.*')
         .pipe(imagemin([
-            imagemin.gifsicle({interlaced: true}),
-	        imagemin.mozjpeg({quality: 75, progressive: true}),
-	        imagemin.optipng({optimizationLevel: 5}),
-	        imagemin.svgo({
-		    plugins: [
-			{removeViewBox: true},
-			{cleanupIDs: false}
-		]
-	})
-]))
+            imagemin.gifsicle({
+                interlaced: true
+            }),
+            imagemin.mozjpeg({
+                quality: 75,
+                progressive: true
+            }),
+            imagemin.optipng({
+                optimizationLevel: 5
+            }),
+            imagemin.svgo({
+                plugins: [{
+                        removeViewBox: true
+                    },
+                    {
+                        cleanupIDs: false
+                    }
+                ]
+            })
+        ]))
         .pipe(dest('dist/images'))
 }
 
 
 function svgSprites() {
-    return src('app/images/icons/*.svg') 
-    .pipe(cheerio({
-        run: ($) => {
-            $("[fill]").removeAttr("fill"); // очищаем цвет у иконок по умолчанию, чтобы можно было задать свой
-            $("[stroke]").removeAttr("stroke"); // очищаем, если есть лишние атрибуты строк
-            $("[style]").removeAttr("style"); // убираем внутренние стили для иконок
-        },
-        parserOptions: { xmlMode: true },
-      })
-  ) 
-    .pipe(
-        svgSprite({
-          mode: {
-            stack: {
-              sprite: '../sprite.svg', 
+    return src('app/images/icons/*.svg')
+        .pipe(cheerio({
+            run: ($) => {
+                $("[fill]").removeAttr("fill"); // очищаем цвет у иконок по умолчанию, чтобы можно было задать свой
+                $("[stroke]").removeAttr("stroke"); // очищаем, если есть лишние атрибуты строк
+                $("[style]").removeAttr("style"); // убираем внутренние стили для иконок
             },
-          },
-        })
-      )
-          .pipe(dest('app/images')); 
-  }
+            parserOptions: {
+                xmlMode: true
+            },
+        }))
+        .pipe(
+            svgSprite({
+                mode: {
+                    stack: {
+                        sprite: '../sprite.svg',
+                    },
+                },
+            })
+        )
+        .pipe(dest('app/images'));
+}
 
 function build() {
     return src([
-        'app/**/*.html',
-        'app/css/style.min.css',
-        'app/js/main.min.js'
-    ], {base: 'app'})
-    .pipe(dest('dist'))
+            'app/**/*.html',
+            'app/css/style.min.css',
+            'app/js/main.min.js'
+        ], {
+            base: 'app'
+        })
+        .pipe(dest('dist'))
 }
 
 function cleanDist() {
@@ -112,18 +140,20 @@ function watching() {
     watch(['app/js/**/*.js', '!app/js/main.min.js'], scripts);
     watch(['app/**/*.html']).on('change', browserSync.reload);
     watch(['app/images/icons/*.svg'], svgSprites);
+    watch(['app/html/**/*.html'], htmlInclude);
+    watch(['app/scss/**/*.scss']).on('change', browserSync.reload);
 
 }
 
-exports.styles = styles; 
-exports.scripts = scripts; 
-exports.browsersync = browsersync; 
-exports.watching = watching; 
+exports.htmlInclude = htmlInclude;
+exports.styles = styles;
+exports.scripts = scripts;
+exports.browsersync = browsersync;
+exports.watching = watching;
 exports.images = images;
 exports.svgSprites = svgSprites;
 exports.cleanDist = cleanDist;
 exports.build = series(cleanDist, images, build);
 
 
-exports.default = parallel(svgSprites, styles, scripts, browsersync, watching);
-
+exports.default = parallel(svgSprites, styles, scripts, htmlInclude, browsersync, watching);

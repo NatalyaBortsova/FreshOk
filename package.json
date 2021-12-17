@@ -17,6 +17,7 @@
     "gulp-autoprefixer": "^8.0.0",
     "gulp-cheerio": "^1.0.0",
     "gulp-concat": "^2.6.1",
+    "gulp-file-include": "^2.3.0",
     "gulp-image": "^6.2.1",
     "gulp-imagemin": "^7.1.0",
     "gulp-sass": "^5.0.0",
@@ -28,6 +29,7 @@
     "mixitup": "^3.3.1",
     "rateyo": "^2.3.2",
     "sass": "^1.43.4",
+    "simplebar": "^5.3.6",
     "slick-carousel": "^1.8.1"
   }
 }
