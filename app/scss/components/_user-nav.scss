@@ -1,0 +1,157 @@
+.user-nav {
+    display: flex;
+
+    &__item {
+        position: relative;
+
+        &:not(:last-child) {
+            margin-right: 9px;
+        }
+    }
+
+    &__user {
+        fill: $white;
+        width: 25px;
+        height: 32px;
+        transition: fill 0.5s;
+
+        &:active {
+            fill: rgba($white, 0.5);
+        }
+    }
+
+    &__heart {
+        fill: $white;
+        width: 32px;
+        height: 28px;
+        transition: fill 0.5s;
+
+        &:active {
+            fill: rgba($white, 0.5);
+        }
+    }
+
+    &__cart {
+        fill: $white;
+        width: 32px;
+        height: 31px;
+        transition: fill 0.5s;
+
+        @include r(560) {
+            width: 24px;
+            height: 24px;
+        }
+
+        &:active {
+            fill: rgba($white, 0.5);
+        }
+    }
+
+    &__search {
+        fill: $white;
+        width: 32px;
+        height: 31px;
+        transition: fill 0.5s;
+
+        @include r(560) {
+            width: 24px;
+            height: 24px;
+        }
+
+        &:active {
+            fill: rgba($white, 0.5);
+        }
+    }
+
+    &__link {
+        width: 50px;
+        height: 50px;
+        transition: background-color 0.5s, opacity 0.5s, box-shadow 0.5s;
+
+        @include r(560) {
+            width: 35px;
+            height: 35px;
+        }
+
+        &:hover {
+            background-color: rgba($white, 0.1);
+            border-radius: 3px;
+        }
+
+        &:focus {
+            box-shadow: inset 0 0 0 3px $green-100;
+            border-radius: 3px;
+        }
+
+        &:active {
+            opacity: 0.1;
+        }
+
+        &--user {
+            @include r(992) {
+                display: none;
+            }
+        }
+
+        &--heart {
+            @include r(992) {
+                display: none;
+            }
+        }
+
+        &--search {
+            display: none;
+
+            @include r(992) {
+                display: block;
+                margin-right: 10px;
+            }
+
+            @include r(560) {
+                width: 30px;
+                height: 30px;
+            }
+        }
+
+        &--cart {
+            @include r(560) {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    }
+
+    &__num {
+        position: absolute;
+        color: $red-900;
+        font-size: 10px;
+        font-weight: 600;
+        background-color: $white;
+        padding: 1px 3px;
+        border-radius: 50%;
+        right: 26px;
+        top: 5px;
+        transform: translateY(-50%);
+        text-align: center;
+        line-height: 1.8;
+
+
+        &--search {
+            @include r(992) {
+                display: none;
+            }
+        }
+
+        &--cart {
+            @include r(992) {
+                right: 26px;
+                top: 5px;
+            }
+
+            @include r(560) {
+                top: 0;
+                right: 18px;
+            }
+        }
+    }
+}

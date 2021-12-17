@@ -1,0 +1,314 @@
+.sidebar-block {
+    @include r(992) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translateY(-200%);
+        opacity: 0;
+        transition: transform 0.5s, opacity 0.5s;
+
+        &.active {
+            transform: translate(0%);
+            opacity: 1;
+            z-index: 6;
+            overflow: auto;
+        }
+    }
+
+    &__wrapper {
+        height: 100vh;
+        background-color: $white;
+        margin-right: 32px;        
+
+        @include r(1230) {
+            margin-right: 25px;
+        }
+
+        @include r(992) {
+            padding: 75px 4px 12px;
+        }
+
+
+        &.active {
+            @include r(992) {
+                border: 1px solid $silver-600;
+               
+            }
+        }
+
+    }
+
+    &__item {
+        border: 1px solid $silver-600;
+        max-width: 302px;
+
+        &:not(:last-child) {
+            margin-bottom: 31px;
+        }
+    }
+
+    &__btn {
+        display: none;
+
+        @include r(992) {
+            display: block;
+            position: absolute;
+            top: 30px;
+            right: 40px;
+        }
+
+        &-icon {
+            fill: $black;
+            width: 18px;
+            height: 18px;
+        }
+    }
+
+    &__toggle {
+        background-color: $white;
+        @extend %ruda;
+        font-size: 24px;
+        line-height: 1.2;
+        width: 300px;
+        padding: 18px 24px 16px 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid $silver-600;
+
+        &-icon {
+            fill: $silver-600;
+            width: 18px;
+            height: 11px;
+        }
+    }
+
+    &__inner {
+        width: 300px;
+        padding: 12px 18px;
+        background-color: $white;
+    }
+
+    &__box {
+        position: relative;
+
+        &:not(:last-child) {
+            margin-bottom: 2px;
+        }
+    }
+
+    &__checkbox {
+        display: none;
+
+        &:checked+.sidebar-block__label::after {
+            opacity: 1;
+        }
+    }
+
+    &__label {
+        cursor: pointer;
+        display: flex;
+        padding: 6px 6px 6px 36px;
+        font-size: 18px;
+        line-height: 1.22;
+        color: $dark-500;
+        letter-spacing: 0.03em;
+        transition: border 0.5s;
+
+        &:hover {
+            &::before {
+                border: 1px solid $dark-500;
+            }
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            top: 4px;
+            left: 3px;
+            border-radius: 3px;
+            background-color: $silver-100;
+            border: 1px solid $silver-600;
+            cursor: pointer;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            display: inline-block;
+            width: 12px;
+            height: 9px;
+            background-image: url('../images/icons/checked.svg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            opacity: 0;
+            top: 10px;
+            left: 9px;
+            cursor: pointer;
+        }
+    }
+
+    .filter-category {
+        &__list {
+            padding: 12px 18px;
+            overflow: auto;
+            max-height: 290px;
+            display: block;
+            transition: display 0.5s;
+
+            &.close {
+                display: none;
+            }
+        }
+
+        &__toggle {
+            transition: transform 0.5s;
+
+            &.close .sidebar-block__toggle-icon {
+                transform: rotate(180deg);
+            }
+        }
+
+        &__item {
+            color: $dark-500;
+            padding: 6px 0;
+            font-size: 18px;
+            letter-spacing: 0.03em;
+            line-height: 1.27;
+        }
+    }
+
+    .filter-proposal {
+        &__list {
+            display: block;
+
+            &.close {
+                display: none;
+            }
+        }
+
+        &__toggle {
+            transition: transform 0.5s;
+
+            &.close .sidebar-block__toggle-icon {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    .filter-brand {
+        &__list {
+            display: block;
+
+            &.close {
+                display: none;
+            }
+        }
+
+        &__toggle {
+            transition: transform 0.5s;
+
+            &.close .sidebar-block__toggle-icon {
+                transform: rotate(180deg);
+            }
+        }
+    }
+}
+
+.filter-price {
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: $white;
+        padding: 22px 18px 24px;
+    }
+
+    &__form {
+        display: block;
+
+        &.close {
+            display: none;
+        }
+    }
+
+    &__toggle {
+        transition: transform 0.5s;
+
+        &.close .sidebar-block__toggle-icon {
+            transform: rotate(180deg);
+        }
+    }
+
+    &__text {
+        @extend %ruda;
+        color: $silver-600;
+        font-size: 16px;
+        line-height: 1.19;
+        letter-spacing: 0.03em;
+    }
+
+    &__input {
+        padding: 12px 20px;
+        border: 1px solid $silver-600;
+        max-width: 80px;
+        border-radius: 3px;
+        background-color: $silver-100;
+        transition: box-shadow 0.5s;
+
+        &:focus {
+            box-shadow: 0 0 0 3px $green-200;
+            border-radius: 3px;
+        }
+    }
+
+    .irs--flat .irs-line {
+        background-color: $image-bg;
+        height: 2px;
+        top: 0;
+        left: 18px;
+        border-radius: 0;
+        width: 264px;
+    }
+
+    .irs--flat {
+        height: 31px;
+        background-color: $white;
+    }
+
+    .irs--flat .irs-bar {
+        background-color: $green-900;
+        height: 2px;
+        top: 0;
+    }
+
+    .irs--flat .irs-handle>i:first-child {
+        top: -29px;
+        width: 16px;
+        height: 16px;
+        background-color: $green-900;
+        border-radius: 50%;
+    }
+
+    .irs--flat .irs-handle.state_hover>i:first-child,
+    .irs--flat .irs-handle:hover>i:first-child {
+        background-color: $green-900;
+    }
+
+
+    .irs--flat .irs-min,
+    .irs--flat .irs-max {
+        display: none;
+    }
+
+    .irs-from,
+    .irs-to,
+    .irs-single {
+        display: none;
+
+    }
+}

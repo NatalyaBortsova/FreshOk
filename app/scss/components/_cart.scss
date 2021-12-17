@@ -1,0 +1,286 @@
+.cart {
+    position: absolute;
+    width: 475px;
+    min-height: 100vh;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    transform: scale(0);
+    background-color: $white;
+    z-index: 5;
+    opacity: 0;
+    transition: transform 0.5s;
+
+    @include r(560) {
+        width: 375px;
+    }
+
+    &.active {
+        transform: scale(1);
+        opacity: 1;
+        transition: opacity 0.5s;
+    }
+
+    &__wrapper {
+        max-width: 475px;
+        display: flex;
+        flex-direction: column;
+        color: $black;
+    }
+
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        padding: 19px 26px 12px 24px;
+        color: $black;
+        line-height: 1.2;
+        border-bottom: 1px solid rgba($silver-600, 0.3);
+
+        @include r(560) {
+            padding: 22px 26px 13px 15px;
+        }
+
+        &-title {
+            font-size: 24px;
+            margin-bottom: 12px;
+
+            @include r(560) {
+                font-size: 18px;
+                margin-bottom: 15px;
+            }
+        }
+
+        &-text {
+            font-weight: 300;
+            font-size: 14px;
+        }
+
+        &-icon {
+            fill: $dark-800;
+            width: 24px;
+            height: 24px;
+
+            @include r(560) {
+                width: 18px;
+                height: 18px;
+            }
+        }
+    }
+
+    &__product {
+        padding: 13px 12px 13px 11px;
+        min-height: calc(100vh - 232px);
+        background-color: $silver-100;
+
+        @include r(992) {
+            min-height: calc(100vh - 216px);
+        }
+
+        @include r(560) {
+            min-height: calc(100vh - 194px);
+        }
+
+        &-image {
+            margin-right: 23px;
+            object-fit: cover;
+
+            @include r(560) {
+                margin-right: 3px;
+            }
+        }
+
+        &-items {
+            position: relative;
+            border: 1px solid $silver-600;
+            border-radius: 3px;
+            padding: 11px 12px 12px 0;
+            display: flex;
+
+            &:not(:last-child) {
+                margin-bottom: 12px;
+            }
+
+            @include r(560) {
+                padding: 12px 15px;
+            }
+        }
+
+        &-icon {
+            position: absolute;
+            fill: $silver-600;
+            width: 12px;
+            height: 12px;
+            top: 12px;
+            right: 12px;
+        }
+
+        &-content {
+            display: flex;
+            flex-direction: column;
+            flex-basis: 370px;
+        }
+
+        &-title {
+            font-size: 14px;
+            margin-bottom: 5px;
+            max-width: 170px;
+        }
+
+        &-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+
+            @include r(560) {
+                display: block;
+            }
+        }
+
+        &-box {
+            display: flex;
+
+            @include r(560) {
+                justify-content: space-between;
+            }
+        }
+
+        &-price {
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 1;
+
+            @include r(560) {
+                display: block;
+                margin-bottom: 25px;
+            }
+
+            &--total {
+                @include r(560) {
+                    display: inline-block;
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        &-number {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: inline-block;
+            background-color: rgba(99, 166, 14, 0.1);
+            font-size: 16px;
+            line-height: 1;
+            padding: 6px 10px;
+        }
+
+        &-form {
+            margin-right: 15px;
+
+            @include r(560) {
+                margin-left: -60px;
+            }
+        }
+    }
+
+    &__total {
+        background-color: $white;
+        padding: 24px 24px;
+        font-size: 24px;
+        display: flex;
+        justify-content: space-between;
+
+        @include r(560) {
+            font-size: 14px;
+            padding: 20px 15px 20px;
+        }
+
+        &-text {
+            line-height: 1.2;
+        }
+
+        &-sum {
+            line-height: 1;
+            font-weight: 600;
+
+            @include r(560) {
+                font-size: 18px;
+            }
+        }
+    }
+
+    &__btn {
+        padding: 23px 23px;
+        font-size: 18px;
+        line-height: 1.27;
+        border-radius: 0;
+        margin-top: auto;
+
+        @include r(560) {
+            padding: 12px;
+        }
+    }
+
+    .jq-number__field {
+        width: 84px;
+        border-bottom-color: transparent;
+        border-radius: 0;
+        box-shadow: none;
+        border: transparent;
+    }
+
+    .jq-number__field input {
+        width: 100%;
+        height: 24px;
+        background-color: rgba(99, 166, 14, 0.1);
+        @extend %opensans;
+        font-weight: 400;
+        font-size: 16px;
+        color: $dark-500;
+        text-align: center;
+    }
+
+    .jq-number {
+        position: relative;
+        padding: 0;
+    }
+
+    .jq-number__spin {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 24px;
+        height: 24px;
+        border: transparent;
+        box-shadow: none;
+        background: $green-900;
+        text-shadow: none;
+        cursor: pointer;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 11px;
+            left: 4px;
+            background-color: $white;
+            width: 16px;
+            height: 1px;
+        }
+
+        &.minus {
+            left: 0;
+        }
+
+        &.plus {
+            &::before {
+                content: '';
+                position: absolute;
+                width: 1px;
+                height: 16px;
+                top: 4px;
+                left: 12px;
+                background-color: $white;
+            }
+        }
+    }
+}

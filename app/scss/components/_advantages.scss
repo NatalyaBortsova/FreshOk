@@ -1,0 +1,112 @@
+.advantages {
+    background-color: $silver-100;
+    padding: 48px 0 29px;
+
+    @include r(560) {
+        padding: 30px 0 30px;
+    }
+
+    &__list {
+        max-width: 1235px;
+        display: flex;
+        justify-content: center;
+
+        @include r(992) {
+            justify-content: space-around;
+        }
+
+        @include r(560) {
+            display: block;
+            width: 100%;
+        }
+    }
+
+    &__item {
+        max-width: 255px;
+        padding-left: 74px;
+        position: relative;
+
+        @include r(992) {
+            max-width: 250px;
+        }
+
+        @include r(768) {
+            padding-left: 40px;
+        }
+
+        @include r(560) {
+            max-width: 300px;
+            padding-left: 71px;
+        }
+
+        &:not(:last-child) {
+            margin-right: 75px;
+
+            @include r(992) {
+                margin-right: 10px;
+            }
+
+            @include r(560) {
+                margin-bottom: 30px;
+            }
+        }
+
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            top: 0;
+            left: 0;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+
+            @include r(768) {
+                width: 30px;
+                height: 30px;
+            }
+
+            @include r(560) {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        &--delivery {
+            &::before {
+                background-image: url('../images/icons/scooter.svg');
+            }
+        }
+
+        &--return {
+            &::before {
+                background-image: url('../images/icons/return-box.svg');
+            }
+        }
+
+        &--support {
+            &::before {
+                background-image: url('../images/icons/support.svg');
+            }
+        }
+    }
+
+    &__subtitle {
+        font-weight: 600;
+        font-size: 16px;
+        color: $dark-900;
+        margin-bottom: 6px;
+        @include line-clamp(2);
+    }
+
+    &__text {
+        color: $dark-500;
+        @include line-clamp(4);
+
+        @include r(560) {
+            line-height: 1.6;
+        }
+    }
+}

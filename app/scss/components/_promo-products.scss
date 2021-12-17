@@ -1,0 +1,178 @@
+
+.promo-products {
+    padding: 72px 0;
+    background-color: $silver-200;
+    text-align: center;
+    font-weight: 600;
+    color: $dark-500;
+
+    @include r(560) {
+        padding: 48px 0 52px;
+    }
+
+    &__filter {
+        @include r(560) {
+            margin-bottom: 20px;
+        }
+
+        &:not(:last-child) {
+            @include r(560) {
+                margin-right: 0;
+            }
+        }
+    }
+
+    &__content {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 30px;
+        margin-bottom: 48px;
+
+        @include r(1230) {
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 15px;
+        }
+
+        @include r(992) {
+            grid-template-columns: repeat(2, 1fr);
+
+        }
+
+        @include r(560) {
+            display: block;
+            max-width: 300px;
+            min-height: 124px;
+            margin: 0 auto;
+            margin-bottom: 23px;
+        }
+    }
+
+    &__badges {
+        top: 12px;
+
+        @include r(560) {
+            top: 8px;
+        }
+    }
+
+    &__inner {
+        display: flex;
+    }
+
+    &__images {
+        margin-right: 15px;
+        flex-basis: 100px;
+    }
+
+    &__link {
+        height: 101px;
+        max-width: 135px;
+        width: 100%;
+    }
+
+    &__item {
+        &:not(:last-child) {
+            @include r(560) {
+                margin-bottom: 14px;
+            }
+        }
+    }
+
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-basis: 180px;
+
+        @include r(992) {
+            flex-basis: 200px;
+        }
+
+        @include r(768) {
+            flex-basis: 180px;
+        }
+    }
+
+    &__title {
+        height: 58px;
+        padding: 0 3px;
+        top: 3px;
+
+        @include r(560) {
+            margin-bottom: 6px;
+        }
+    }
+
+    &__card {
+        padding: 12px 12px;
+        background-color: $white;
+
+        @include r(560) {
+            padding: 11px 12px;
+        }
+    }
+
+    &__sale {
+        text-transform: uppercase;
+        color: $green-900;
+        font-size: 10px;
+        line-height: 1;
+
+        &--closed {
+            color: $red-900;
+        }
+
+        &--finished {
+            color: $silver-600;
+        }
+    }
+
+    &__box {
+        padding: 0 0;
+    }
+
+    &__new {
+        font-size: 20px;
+        line-height: 1;
+    }
+
+    &__old {
+        position: relative;
+        color: $silver-600;
+
+        @include r(1230) {
+            font-size: 12px;
+        }
+
+        @include r(992) {
+            font-size: 14px;
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 45px;
+            height: 1px;
+            top: 9px;
+            right: -3px;
+            background-color: $silver-600;
+            transform: rotate(165deg);
+        }
+    }
+
+    &__rating {
+        position: relative;
+        padding-right: 19px;
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            top: 2px;
+            left: 22px;
+            background-image: url('../images/icons/star.svg');
+        }
+    }
+}
